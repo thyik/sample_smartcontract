@@ -4,22 +4,24 @@ App = {
     account: "0x0",
     hasVoted: false,
 
-    init: async function () {
-        return await App.initWeb3();
+    init: function () {
+        return App.initWeb3();
     },
 
-    initWeb3: async function () {
+    initWeb3: function () {
         /*
          * Replace me...
          */
         if (typeof web3 !== "undefinded") {
             App.web3Provider = web3.currentProvider;
             web3 = new Web3(web3.currentProvider);
+            console.log("1. InitWeb3");
         } else {
             App3.web3Provider = new Web3.providers.HttpProvider(
                 "http://localhost:7545"
             );
             web3 = new Web3(App.Web3Provider);
+            console.log("2. InitWeb3");
         }
         return App.initContract();
     },
@@ -32,8 +34,9 @@ App = {
             // Instantiate a new truffle contract from artifact
             App.contracts.MyLandContract = TruffleContract(house);
             // Connect provider to interact with contract
-            App.contracts.MyLandContract.setProvider(app.web3Provider);
+            App.contracts.MyLandContract.setProvider(App.web3Provider);
             // App.listenForEvents();
+            console.log("1. initContract");
             return App.render();
         });
     },
@@ -61,6 +64,7 @@ App = {
         App.contracts.MyLandContract.deployed()
             .then(function (instance) {
                 houseInstance = instance;
+                console.log("1. Deploy : ", houseInstance);
                 return houseInstance.getNoOfLands(App.account);
             })
             .then(function (result) {
