@@ -14,6 +14,7 @@ App = {
          */
         if (typeof web3 !== "undefinded") {
             App.web3Provider = web3.currentProvider;
+            web3 = new Web3(web3.currentProvider);
         } else {
             App3.web3Provider = new Web3.providers.HttpProvider(
                 "http://localhost:7545"
@@ -47,7 +48,7 @@ App = {
 
         ///
         web3.eth.getCoinbase(function (err, account) {
-            if (err == null) {
+            if (err === null) {
                 App.account = account;
                 $("#accountAddress").html("Your Account: " + account);
                 console.log("account : " + App.account);
