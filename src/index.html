@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate</title>
+  <!-- Bootstrap -->
+  <link href="css/bootsrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <form onSubmit="App.addProperty(); return false;">
+    <label for="ettherAddress">Ether address:</label><br>
+    <input type="text" id="etherAddress" name="etherAddress"><br>
+    <label for="Location">Location:</label><br>
+    <input type="text" id="location" name="location"><br>
+    <label for="Cost">Cost:</label><br>
+    <input type="text" id="cost" name="cost"><br>
+    <br><button type="submit" class="btn btn-primary">Add Property</button>
+  </form>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script scr="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
